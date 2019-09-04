@@ -2,7 +2,7 @@
 
 let a = 5;
 console.log(a);
-
+alert(a++);
 // console.log(second);
 var leftBorderWidth = 1;
 {
