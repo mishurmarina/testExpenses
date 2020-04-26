@@ -83,4 +83,50 @@ window.addEventListener('DOMContentLoaded', function () {
 
     setClock('timer', deadline);
 
+    // модальное окно
+    let more = document.querySelector('.more'),
+        overlay = document.querySelector('.overlay'),
+        close = document.querySelector('.popup-close');
+
+    more.addEventListener('click', function () {
+        overlay.style.display = 'block';
+        this.classList.add('more-splash');
+        // console.log(this); искала класс more-splash
+        document.body.style.overflow = 'hidden';
+    });
+
+    close.addEventListener('click', function () {
+        overlay.style.display = 'none';
+        more.classList.remove('more-splash');
+        document.body.style.overflow = '';
+    });
+
+    // подключаем модальное окно к кнопкам Узнать больше
+        
+        let descriptionBtns = document.querySelectorAll('.description-btn');
+        //     description = document.querySelectorAll('.description');
+        // console.log(description);
+    
+
+    function showOverlay() {
+            overlay.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+
+    }
+    
+
+    // можно и через цикл:
+    
+    // for (let i = 0; i < descriptionBtns.length; i++){
+    //     descriptionBtns[i].addEventListener('click', function(){
+    //         showOverlay();
+    //     });
+    // }
+
+    descriptionBtns.forEach(function(item,i,descriptionBtns){
+        item.addEventListener('click',function(){
+            showOverlay();
+        });
+    });
+
 });
