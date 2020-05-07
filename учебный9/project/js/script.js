@@ -58,9 +58,30 @@ window.addEventListener('DOMContentLoaded', function () {
             seconds = timer.querySelector('.seconds');
 
 
-        let timeInterval = setInterval(updateClock, 1000);
+        //let timeInterval = setInterval(updateClock, 1000);
+        
 
-        function updateClock() {
+        // function updateClock() {
+        //     let t = getTimeRemaining(endtime);
+        //     if (t.seconds < 10) {
+        //         t.seconds = '0' + t.seconds;
+        //     }
+        //     if (t.minutes < 10) {
+        //         t.minutes = '0' + t.minutes;
+        //     }
+        //     if (t.hours < 10) {
+        //         t.hours = '0' + t.hours;
+        //     }
+        //     hours.textContent = t.hours;
+        //     minutes.textContent = t.minutes;
+        //     seconds.textContent = t.seconds;
+        //     if (t.total <= 0) {
+        //         clearInterval(timeInterval);
+        //     }
+        // }
+        // переписываем setInterval в ES6:
+        let timeInterval = setInterval(() => 
+         {
             let t = getTimeRemaining(endtime);
             if (t.seconds < 10) {
                 t.seconds = '0' + t.seconds;
@@ -77,7 +98,7 @@ window.addEventListener('DOMContentLoaded', function () {
             if (t.total <= 0) {
                 clearInterval(timeInterval);
             }
-        }
+        },1000);
 
     }
 
@@ -101,18 +122,18 @@ window.addEventListener('DOMContentLoaded', function () {
         document.body.style.overflow = '';
     });
 
-    // подключаем модальное окно к кнопкам Узнать больше
+    // подключаем модальное окно к кнопкам Узнать больше:
         
         let descriptionBtns = document.querySelectorAll('.description-btn');
         //     description = document.querySelectorAll('.description');
         // console.log(description);
     
+    // в стандарте ES5:
+    // function showOverlay() {
+    //         overlay.style.display = 'block';
+    //         document.body.style.overflow = 'hidden';
 
-    function showOverlay() {
-            overlay.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-
-    }
+    // }
     
 
     // можно и через цикл:
@@ -123,9 +144,20 @@ window.addEventListener('DOMContentLoaded', function () {
     //     });
     // }
 
+    // descriptionBtns.forEach(function(item,i,descriptionBtns){
+    //     item.addEventListener('click',function(){
+    //         showOverlay();
+    //     });
+    // });
+
+    // переписываем в ES6 делаем функцию showOverlay стрелочной :
     descriptionBtns.forEach(function(item,i,descriptionBtns){
         item.addEventListener('click',function(){
-            showOverlay();
+            let showoverlay = () =>{
+                overlay.style.display = 'block';
+                document.body.style.overflow = 'hidden';   
+            };
+            showoverlay();
         });
     });
 
