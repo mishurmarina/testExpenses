@@ -1,0 +1,16 @@
+html { box-sizing: border-box; }
+*, *:before, *:after { box-sizing: inherit; }/*Я добавляю это во все мои CSS документы. Таким образом я могу добавить элементу отступ и границы, и это не повлияет на его высоту и/или ширину, которые я ему установил*/
+
+.image{
+    display: inline-block;/*элементы размещаются в ряд*/
+     width: 300px;
+    }
+
+     
+    
+.active{
+    background: #007E3E; /* Цвет фона */
+    color: #fff; /* Цвет текста */
+    padding: 10px; /* Поля вокруг текста */
+    border-radius: 10px; /* Уголки */
+}
